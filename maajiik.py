@@ -1,7 +1,6 @@
 import pygame
 import Character
 import Objs
-
 pygame.init()
 display_width = 1600
 display_height = 900
@@ -264,6 +263,7 @@ def game_loop(currentChamber):
             if collided(char.x, char.y, char.imgW, char.imgH, chests.x, chests.y, 100, 100):
                 for x in chests.items:
                     graph.chambers[currentChamber].items.append(x)
+                    chests.chestImg = pygame.image.load('art/emptyChest.png')
                     chests.items.remove(x)
         for item in graph.chambers[currentChamber].items:
             show(item.x, item.y, item.itemImg)
