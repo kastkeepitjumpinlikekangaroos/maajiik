@@ -178,16 +178,20 @@ def constructGraph():
     graph.addChamber(chamber)
     graph.addChamber(chamber)
 
+
 def collided(x1, y1, width1, height1, x2, y2, width2, height2):
-    return (x2 <= x1 <= x2 + width2 or x2 <= x1 + width1 <= x2 + width2) \
-           and (y2 <= y1 <= y2 + height2 or y2 <= y1 + height1 <= y2 + height2)
+    return (x2 <= x1 <= x2 + width2 or x2 <= x1 + width1 <= x2 + width2 or (x1 <= x2 and x1 + width1 >= x2 + width2)) \
+           and (y2 <= y1 <= y2 + height2 or y2 <= y1 + height1 <= y2 + height2 or (y1 <= y2 and y1 + height1 >= y2 + height2))
+
 
 def show(x, y, img):
     gameDisplay.blit(img, (x, y))
 
+
 def spill(chest):
     for x in chest.items:
         graph.chambers[currentChamber].items.append(x)
+
 
 def game_loop(currentChamber):
     constructGraph()
