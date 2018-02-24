@@ -1,6 +1,3 @@
-import pygame
-
-
 class Character:
     def __init__(self, health, attack, armour, mType, charImg, imgW, imgH):
         self.health = health
@@ -18,8 +15,10 @@ class Character:
         self.weaponImg = None
         self.armourImg = None
         self.magic = ""
+
     def addSpell(self, name):
         self.magic = name
+        
     def newWeapon(self, itemImg):
         self.weaponImg = itemImg
 
@@ -43,6 +42,7 @@ class NPC:
         self.spellBuffer = ""
         self.dialogbImg = dialogbImg
         self.magicName = magicName
+        
     def unlockSpell(self, combo, char):
         if combo == self.combo:
             self.dialogImg = self.dialogbImg
@@ -53,3 +53,8 @@ class NPC:
         if len(self.spellBuffer) == len(self.combo):
             self.unlockSpell(self.spellBuffer, char)
             self.spellBuffer = ""
+
+
+class Tidabite:
+    def __init__(self, x, y, NPCImg):
+        print()

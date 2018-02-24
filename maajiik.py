@@ -143,6 +143,7 @@ def constructGraph():
     NPC = Character.NPC(100, display_height - 100, pygame.image.load('art/dialog14.png'),
                         pygame.image.load('art/dialog14.png'), pygame.image.load('art/prisoner.png'), '', "")
     chamber.addNpc(NPC)
+
     graph.addChamber(chamber)
     #chamber 15
     chamberDoors = [Objs.Door(' ', 1, 16), Objs.Door(' ', 3, 14), Objs.Door(' ', 4, 10)]
@@ -262,6 +263,17 @@ def game_loop(currentChamber):
                 currentChamber = door.destination
                 char.x = display_width/2
                 char.y = display_height/2
+            if door.failedAttempt and door.locked:
+                door.doorFlash = True
+                door.flashTimer = 0
+                door.failedAttempt = False
+            if door.doorFlash:
+                door.flashTimer += 1
+                if door.flashTimer == 10:
+                    if door.number % 2 == 0:
+                        door.doorImg = pygame.image.load('art/door0.jpg')
+                    else:
+                        door.doorImg = pygame.image.load('art/door.jpg')
         for chests in graph.chambers[currentChamber].chests:
             show(chests.x, chests.y, chests.chestImg)
             if collided(char.x, char.y, char.imgW, char.imgH, chests.x, chests.y, 100, 100):
