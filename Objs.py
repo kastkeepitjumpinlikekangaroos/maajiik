@@ -11,6 +11,8 @@ class Item:
         self.y = y
         self.itemImg = itemImg
         self.itemImgRight = itemImgRight
+        self.imgW = 50
+        self.imgH = 50
 
 class Chest:
     def __init__(self, x, y, items):

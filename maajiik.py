@@ -297,7 +297,6 @@ def game_loop(currentChamber):
     constructGraph()
     quit = False
     char = Character.Character(100, 1, 1, "", pygame.image.load('art/hero.png'), 100, 100)
-    alive = char.health > 0
     keys = []
     haveRedKey = False
     haveBlueKey = False
@@ -395,16 +394,16 @@ def game_loop(currentChamber):
             if tida.health > 0:
                 show(tida.x, tida.y, tida.tidaImg)
                 tida.chase(char)
-                if collided(char.x, char.y, char.imgW, char.imgH, tida.x, tida.y, 100, 100):
+                if collided(char.x, char.y, char.imgW, char.imgH, tida.x, tida.y, tida.imgW, tida.imgH):
                     if char.x < tida.x:
                         char.x += -21
                     elif char.x >= tida.x:
                         char.x += 21
-                    char.health += (int) (-25/char.armour)
-                if collided(char.x - 50, char.y + 25, 50, 50, tida.x, tida.y, 100, 100) and char.showWeaponLeft:
+                    char.health += (int)(-tida.damage/char.armour)
+                if collided(char.x - 50, char.y + 25, 50, 50, tida.x, tida.y, tida.imgW, tida.imgH) and char.showWeaponLeft:
                     tida.x += -21
                     tida.health += -char.attack
-                if collided(char.x + 100, char.y + 25, 50, 50, tida.x, tida.y, 100, 100) and char.showWeaponRight:
+                if collided(char.x + 100, char.y + 25, 50, 50, tida.x, tida.y, tida.imgW, tida.imgH) and char.showWeaponRight:
                     tida.x += 21
                     tida.health += -char.attack
             else:
@@ -418,7 +417,7 @@ def game_loop(currentChamber):
                     chests.items.remove(x)
         for item in graph.chambers[currentChamber].items:
             show(item.x, item.y, item.itemImg)
-            if collided(char.x, char.y, char.imgW, char.imgH, item.x, item.y, 50, 50):
+            if collided(char.x, char.y, char.imgW, char.imgH, item.x, item.y, item.imgW, item.imgH):
                 if item.type == 'weapon':
                     char.attack += item.stat
                     char.newWeapon(item)
@@ -447,7 +446,6 @@ def game_loop(currentChamber):
         show(char.x, char.y, char.charImg)
         if char.showWeaponLeft:
             show(char.x - 50, char.y + 25, char.weaponImgLeft)
-
         elif char.showWeaponRight:
             show(char.x + 100, char.y + 25, char.weaponImgRight)
         if gameover:

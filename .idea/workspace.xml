@@ -20,11 +20,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="maajiik.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="maajiik.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/maajiik.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="410" column="64" lean-forward="false" selection-start-line="410" selection-start-column="64" selection-end-line="410" selection-end-column="64" />
+            <state relative-caret-position="391">
+              <caret line="430" column="24" lean-forward="true" selection-start-line="430" selection-start-column="24" selection-end-line="430" selection-end-column="24" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -32,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Character.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Character.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Character.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1355">
-              <caret line="78" column="24" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+            <state relative-caret-position="981">
+              <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -45,8 +45,8 @@
       <file leaf-file-name="Objs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Objs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2236">
-              <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+            <state relative-caret-position="476">
+              <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -65,8 +65,9 @@
     <findStrings>
       <find>can</find>
       <find>addToS</find>
-      <find>Objs.Item</find>
       <find>canPass</find>
+      <find>Objs.Item</find>
+      <find>collided</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,9 +79,9 @@
         <option value="$PROJECT_DIR$/Graph.py" />
         <option value="$PROJECT_DIR$/Utils.py" />
         <option value="$PROJECT_DIR$/Inventory.py" />
+        <option value="$PROJECT_DIR$/Character.py" />
         <option value="$PROJECT_DIR$/Objs.py" />
         <option value="$PROJECT_DIR$/maajiik.py" />
-        <option value="$PROJECT_DIR$/Character.py" />
       </list>
     </option>
   </component>
@@ -300,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519587113031</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added combat for player">
+      <created>1519590040898</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1519590040898</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -338,7 +346,8 @@
     <MESSAGE value="Fixed a bug where items would not pick up" />
     <MESSAGE value="Doors now flash if you enter the wrong combo" />
     <MESSAGE value="added tidabites, added gameover screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="added tidabites, added gameover screen" />
+    <MESSAGE value="added combat for player" />
+    <option name="LAST_COMMIT_MESSAGE" value="added combat for player" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -513,29 +522,29 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maajiik.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="410" column="64" lean-forward="false" selection-start-line="410" selection-start-column="64" selection-end-line="410" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Objs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2236">
-          <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+        <state relative-caret-position="476">
+          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1355">
-          <caret line="78" column="24" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+        <state relative-caret-position="981">
+          <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maajiik.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="430" column="24" lean-forward="true" selection-start-line="430" selection-start-column="24" selection-end-line="430" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -43,7 +43,6 @@ class Character:
         self.y = 0
 
 
-
 class NPC:
     def __init__(self, x, y, dialogImg, dialogbImg, NPCImg, combo, magicName):
         self.x = x
@@ -70,13 +69,14 @@ class NPC:
 
 
 class Tidabite:
-    def __init__(self, x, y, NPCImg):
+    def __init__(self, x, y, NPCImg, damage=25):
         self.x = x
         self.y = y
         self.imgW = 100
         self.imgH = 100
         self.tidaImg = NPCImg
         self.health = 50
+        self.damage = damage
 
     def chase(self, character):
         if self.x < character.x:
