@@ -14,9 +14,9 @@ class Character:
         self.charImg = charImg
         self.imgW = imgW
         self.imgH = imgH
-        self.direction = "right"
-        self.weaponImgLeft = pygame.image.load('art/stiik0.png')
-        self.weaponImgRight = pygame.image.load('art/stiik.png')
+        self.direction = ""
+        self.weaponImgLeft = None
+        self.weaponImgRight = None
         self.armourImg = None
         self.magic = ""
         self.showWeaponLeft = False
@@ -69,22 +69,24 @@ class NPC:
 
 
 class Tidabite:
-    def __init__(self, x, y, NPCImg, damage=25):
+    def __init__(self, x, y, NPCImg, NPCImgRight=pygame.image.load('art/tidabite0.png'), damage=25):
         self.x = x
         self.y = y
         self.imgW = 100
         self.imgH = 100
         self.tidaImg = NPCImg
+        self.tidaImgLeft = NPCImg
         self.health = 50
         self.damage = damage
+        self.tidaImgRight = NPCImgRight
 
     def chase(self, character):
         if self.x < character.x:
             self.x += 3
-            self.tidaImg = pygame.image.load('art/tidabite0.png')
+            self.tidaImg = self.tidaImgRight
         elif self.x > character.x:
             self.x += -3
-            self.tidaImg = pygame.image.load('art/tidabite.png')
+            self.tidaImg = self.tidaImgLeft
         if self.y < character.y:
             self.y += 3
         elif self.y > character.y:

@@ -11,7 +11,8 @@ white = (255, 255, 255)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
-gameDisplay = pygame.display.set_mode((display_width, display_height))#has to be a touple
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+#gameDisplay = pygame.display.set_mode((display_width, display_height), pygame.FULLSCREEN)#has to be a touple
 pygame.display.set_caption('Maajiik')
 clock = pygame.time.Clock()
 
@@ -132,7 +133,6 @@ def constructGraph():
     chamber.addTida(tida)
     tida = Character.Tidabite(display_width / 2 - 600, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
     chamber.addTida(tida)
-
     graph.addChamber(chamber)
     #chamber 7
     chamberDoors = [Objs.Door(' ', 3, 6)]
@@ -176,6 +176,11 @@ def constructGraph():
     #chamber 11
     chamberDoors = [Objs.Door(' ', 1, 12), Objs.Door(' ', 3, 10)]
     chamber = Objs.Chamber(11, chamberDoors)
+    tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('hero.png'), pygame.image.load('hero.png'), 100)
+    tida.health = 500
+    tida.imgW = 626
+    tida.imgH = 747
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 12
     chamberDoors = [Objs.Door(' ', 3, 11)]
@@ -216,10 +221,34 @@ def constructGraph():
     #chamber 15
     chamberDoors = [Objs.Door(' ', 1, 16), Objs.Door(' ', 3, 14), Objs.Door(' ', 4, 10)]
     chamber = Objs.Chamber(15, chamberDoors)
+    tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('hero.png'),
+                              pygame.image.load('hero.png'), 100)
+    tida.health = 500
+    tida.imgW = 626
+    tida.imgH = 747
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 16
     chamberDoors = [Objs.Door(' ', 3, 15)]
     chamber = Objs.Chamber(16, chamberDoors)
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 400, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 200, 100, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 400, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 200, 400, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 600, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 500, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 200, 700, chamberItems)
+    chamber.addChest(chest)
     graph.addChamber(chamber)
     #chamber 17
     chamberDoors = [Objs.Door(' ', 4, 13)]
@@ -319,10 +348,8 @@ def game_loop(currentChamber):
                         char.direction = 'right'
                     if event.key == pygame.K_w:
                         char.ychange = -10
-                        char.direction = 'up'
                     if event.key == pygame.K_s:
                         char.ychange = 10
-                        char.direction = 'down'
                     if event.key == pygame.K_p:
                         if char.direction == 'left':
                             char.showWeaponLeft = True
@@ -358,7 +385,7 @@ def game_loop(currentChamber):
                     for npc in graph.chambers[currentChamber].npcs:
                         if collided(char.x, char.y, char.imgW, char.imgH, npc.x, npc.y, npc.imgW + 50, npc.imgH + 50) and haveBlackKey:
                             npc.addToSpellBuffer(str(3), char)
-                if event.key == pygame.K_m:
+                if event.key == pygame.K_o:
                     char.useSpell()
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a or event.key == pygame.K_d:
@@ -377,8 +404,18 @@ def game_loop(currentChamber):
             show(door.x, door.y, door.doorImg)
             if collided(char.x, char.y, char.imgW, char.imgH, door.x, door.y, door.width, door.height) and door.canPass():
                 currentChamber = door.destination
-                char.x = display_width/2
-                char.y = display_height/2
+                if door.number == 1:
+                    char.x = 200
+                    char.y = display_height / 2
+                elif door.number == 2:
+                    char.x = display_width / 2
+                    char.y = 200
+                elif door.number == 3:
+                    char.x = display_width - 200
+                    char.y = display_height / 2
+                elif door.number == 4:
+                    char.x = display_width / 2
+                    char.y = display_height - 200
             if door.failedAttempt and door.locked:
                 door.doorFlash = True
                 door.flashTimer = 0
@@ -444,9 +481,9 @@ def game_loop(currentChamber):
                 show(display_width/2 - 400, display_height/2 - 100, npc.dialogImg)
         showText('attack: ' + str(char.attack) + ' armour: ' + str(char.armour) + ' health: ' + str(char.health), 300, 50)
         show(char.x, char.y, char.charImg)
-        if char.showWeaponLeft:
+        if char.showWeaponLeft and char.weaponImgLeft is not None:
             show(char.x - 50, char.y + 25, char.weaponImgLeft)
-        elif char.showWeaponRight:
+        elif char.showWeaponRight and char.weaponImgRight is not None:
             show(char.x + 100, char.y + 25, char.weaponImgRight)
         if gameover:
             showText('Game OVER', display_width/2, display_height/2)
