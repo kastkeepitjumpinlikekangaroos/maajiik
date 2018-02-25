@@ -59,6 +59,8 @@ def constructGraph():
     NPC = Character.NPC(100, 100, pygame.image.load('art/dialog2.png'),
                         pygame.image.load('art/dialog2b.png'), pygame.image.load('art/prisoner.png'), '221', "energy")
     chamber.addNpc(NPC)
+    tida = Character.Tidabite(display_width - 400, 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 3
     chamberDoors = [Objs.Door(' ', 1, 4), Objs.Door('132', 2, 9), Objs.Door('1', 3, 2), Objs.Door(' ', 4, 0)]
@@ -74,14 +76,63 @@ def constructGraph():
     #chamber 4
     chamberDoors = [Objs.Door('1', 1, 5), Objs.Door('2', 2, 10), Objs.Door(' ', 3, 3), Objs.Door('3', 4, 1)]
     chamber = Objs.Chamber(4, chamberDoors)
+    tida = Character.Tidabite(display_width/2, display_height/2, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 300, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 200, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 200, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 500, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 5
     chamberDoors = [Objs.Door(' ', 1, 6), Objs.Door(' ', 3, 4)]
     chamber = Objs.Chamber(5, chamberDoors)
+    tida = Character.Tidabite(display_width / 2 + 300, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 200, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 200, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 500, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 100, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 400, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 500, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 600, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 6
     chamberDoors = [Objs.Door('bigLock', 1, 7), Objs.Door(' ', 3, 5)]
     chamber = Objs.Chamber(6, chamberDoors)
+    tida = Character.Tidabite(display_width / 2 + 300, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 200, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 200, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 500, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 100, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 400, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 500, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 600, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 400, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 500, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 600, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+
     graph.addChamber(chamber)
     #chamber 7
     chamberDoors = [Objs.Door(' ', 3, 6)]
@@ -94,6 +145,10 @@ def constructGraph():
     NPC = Character.NPC(100, 500, pygame.image.load('art/dialog8.png'),
                         pygame.image.load('art/dialog8.png'), pygame.image.load('art/prisonerDying.png'), '', "")
     chamber.addNpc(NPC)
+    tida = Character.Tidabite(display_width - 400, 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(400, 100, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 9
     chamberDoors = [Objs.Door('212', 1, 10), Objs.Door('321', 2, 14), Objs.Door(' ', 3, 8), Objs.Door('121', 4, 3)]
@@ -102,6 +157,8 @@ def constructGraph():
     NPC = Character.NPC(display_width / 2 + 400, display_height / 2 + 100, pygame.image.load('art/dialog9.png'),
                         pygame.image.load('art/dialog9.png'), pygame.image.load('art/prisoner.png'), '', "")
     chamber.addNpc(NPC)
+    tida = Character.Tidabite(300, 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 10
     chamberDoors = [Objs.Door('121', 1, 11), Objs.Door('213', 2, 15), Objs.Door(' ', 3, 9), Objs.Door('111', 4, 4)]
@@ -135,6 +192,14 @@ def constructGraph():
     NPC = Character.NPC(display_width/2 + 400, display_height/2 + 100, pygame.image.load('art/dialog13.png'),
                         pygame.image.load('art/dialog13.png'), pygame.image.load('art/prisonerDead.png'), '', "")
     chamber.addNpc(NPC)
+    tida = Character.Tidabite(display_width, 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(400, 800, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(100, 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width/2, display_height, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 14
     chamberDoors = [Objs.Door('213', 1, 15), Objs.Door('233', 2, 18), Objs.Door(' ', 4, 9)]
@@ -143,7 +208,10 @@ def constructGraph():
     NPC = Character.NPC(100, display_height - 100, pygame.image.load('art/dialog14.png'),
                         pygame.image.load('art/dialog14.png'), pygame.image.load('art/prisoner.png'), '', "")
     chamber.addNpc(NPC)
-
+    tida = Character.Tidabite(display_width, display_height, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(200, 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 15
     chamberDoors = [Objs.Door(' ', 1, 16), Objs.Door(' ', 3, 14), Objs.Door(' ', 4, 10)]
@@ -168,6 +236,37 @@ def constructGraph():
     NPC = Character.NPC(100, 800, pygame.image.load('art/dialog13.png'),
                         pygame.image.load('art/dialog13.png'), pygame.image.load('art/prisonerDead.png'), '', "")
     chamber.addNpc(NPC)
+    tida = Character.Tidabite(display_width / 2 + 300, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 200, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 200, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 500, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 100, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 400, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 500, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 600, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 400, display_height / 2 - 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 + 500, display_height / 2 - 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2 - 600, display_height / 2 + 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width, 200, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(400, 800, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(100, 500, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+    tida = Character.Tidabite(display_width / 2, display_height, pygame.image.load('art/tidabite.png'))
+    chamber.addTida(tida)
+
     graph.addChamber(chamber)
     #chamber 18
     chamberDoors = [Objs.Door(' ', 4, 14), Objs.Door('132321233', 2, 0)]
@@ -203,24 +302,35 @@ def game_loop(currentChamber):
     haveRedKey = False
     haveBlueKey = False
     haveBlackKey = False
-    while not quit and alive:
+    gameover = False
+    while not quit:
+        if char.health <= 0:
+            gameover = True
         #event handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit = True
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
-                    char.xchange = -20
-                    char.direction = 'left'
-                if event.key == pygame.K_d:
-                    char.xchange = 20
-                    char.direction = 'right'
-                if event.key == pygame.K_w:
-                    char.ychange = -20
-                    char.direction = 'up'
-                if event.key == pygame.K_s:
-                    char.ychange = 20
-                    char.direction = 'down'
+                if not gameover:
+                    if event.key == pygame.K_a:
+                        char.xchange = -10
+                        char.direction = 'left'
+                    if event.key == pygame.K_d:
+                        char.xchange = 10
+                        char.direction = 'right'
+                    if event.key == pygame.K_w:
+                        char.ychange = -10
+                        char.direction = 'up'
+                    if event.key == pygame.K_s:
+                        char.ychange = 10
+                        char.direction = 'down'
+                if event.key == pygame.K_RETURN and gameover:
+                    constructGraph()
+                    currentChamber = 0
+                    char.reset()
+
+
+
                 #red key handling
                 if event.key == pygame.K_1:
                     for door in graph.chambers[currentChamber].doors:
@@ -274,6 +384,15 @@ def game_loop(currentChamber):
                         door.doorImg = pygame.image.load('art/door0.jpg')
                     else:
                         door.doorImg = pygame.image.load('art/door.jpg')
+        for tida in graph.chambers[currentChamber].tidas:
+            show(tida.x, tida.y, tida.tidaImg)
+            tida.chase(char)
+            if collided(char.x, char.y, char.imgW, char.imgH, tida.x, tida.y, 100, 100):
+                if char.x < tida.x:
+                    char.x += -21
+                elif char.x >= tida.x:
+                    char.x += 21
+                char.health += (int) (-25/char.armour)
         for chests in graph.chambers[currentChamber].chests:
             show(chests.x, chests.y, chests.chestImg)
             if collided(char.x, char.y, char.imgW, char.imgH, chests.x, chests.y, 100, 100):
@@ -310,6 +429,9 @@ def game_loop(currentChamber):
                 show(display_width/2 - 400, display_height/2 - 100, npc.dialogImg)
         showText('attack: ' + str(char.attack) + ' armour: ' + str(char.armour) + ' health: ' + str(char.health), 300, 50)
         show(char.x, char.y, char.charImg)
+        if gameover:
+            showText('Game OVER', display_width/2, display_height/2)
+            showText('Enter to play again', display_width / 2, display_height / 2 + 300)
         pygame.display.update()
         clock.tick(60)
 game_loop(currentChamber)

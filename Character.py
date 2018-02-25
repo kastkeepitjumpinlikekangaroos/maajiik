@@ -1,3 +1,6 @@
+import pygame
+
+
 class Character:
     def __init__(self, health, attack, armour, mType, charImg, imgW, imgH):
         self.health = health
@@ -29,6 +32,11 @@ class Character:
         if self.magic == "heal":
             self.health += 10
 
+    def reset(self):
+        self.health = 100
+        self.attack = 1
+        self.armour = 1
+
 
 class NPC:
     def __init__(self, x, y, dialogImg, dialogbImg, NPCImg, combo, magicName):
@@ -57,4 +65,20 @@ class NPC:
 
 class Tidabite:
     def __init__(self, x, y, NPCImg):
-        print()
+        self.x = x
+        self.y = y
+        self.imgW = 100
+        self.imgH = 100
+        self.tidaImg = NPCImg
+
+    def chase(self, character):
+        if self.x < character.x:
+            self.x += 3
+            self.tidaImg = pygame.image.load('art/tidabite0.png')
+        elif self.x > character.x:
+            self.x += -3
+            self.tidaImg = pygame.image.load('art/tidabite.png')
+        if self.y < character.y:
+            self.y += 3
+        elif self.y > character.y:
+            self.y += -3
