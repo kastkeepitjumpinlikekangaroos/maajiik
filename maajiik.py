@@ -109,7 +109,7 @@ def constructGraph():
     chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 6
-    chamberDoors = [Objs.Door('bigLock', 1, 7), Objs.Door(' ', 3, 5)]
+    chamberDoors = [Objs.Door('223121', 1, 7), Objs.Door(' ', 3, 5)]
     chamber = Objs.Chamber(6, chamberDoors)
     tida = Character.Tidabite(display_width / 2 + 300, display_height / 2 + 300, pygame.image.load('art/tidabite.png'))
     chamber.addTida(tida)
@@ -137,6 +137,42 @@ def constructGraph():
     #chamber 7
     chamberDoors = [Objs.Door(' ', 3, 6)]
     chamber = Objs.Chamber(7, chamberDoors)
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 400, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 200, 100, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 400, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 200, 400, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 600, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 500, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 200, 700, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 600, display_height - 400, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 500, display_height - 300, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 300, 100, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 600, display_height - 500, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 500, display_height - 400, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 300, 400, chamberItems)
+    chamber.addChest(chest)
+    chamberItems = [Objs.Item("weapon", 15, 600, display_height - 600, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 500, display_height - 500, pygame.image.load('art/armour.png'), None)]
+    # add chest
+    chest = Objs.Chest(display_width - 300, 700, chamberItems)
+    chamber.addChest(chest)
     graph.addChamber(chamber)
     #chamber 8
     chamberDoors = [Objs.Door('123', 1, 9), Objs.Door('111', 2, 13), Objs.Door(' ', 4, 2)]
