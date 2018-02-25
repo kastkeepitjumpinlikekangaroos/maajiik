@@ -48,8 +48,8 @@ def constructGraph():
     #chamber 1
     chamberDoors = [Objs.Door(' ', 2, 4)]
     chamber = Objs.Chamber(1, chamberDoors)
-    chamberItems = [Objs.Item("weapon", 10, 700, display_height - 500, pygame.image.load('art/stiik.png')),
-                    Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/cloak.png'))]
+    chamberItems = [Objs.Item("weapon", 10, 700, display_height - 500, pygame.image.load('art/stiik0.png'), pygame.image.load('art/stiik.png')),
+                    Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/cloak.png'), None)]
     chest = Objs.Chest(400, display_height - 400, chamberItems)
     chamber.addChest(chest)
     graph.addChamber(chamber)
@@ -65,7 +65,7 @@ def constructGraph():
     #chamber 3
     chamberDoors = [Objs.Door(' ', 1, 4), Objs.Door('132', 2, 9), Objs.Door('1', 3, 2), Objs.Door(' ', 4, 0)]
     chamber = Objs.Chamber(3, chamberDoors)
-    chamberItems = [Objs.Item("weapon", 3, 700, display_height - 500, pygame.image.load('art/stiik.png')), Objs.Item("armour", 5, 900, display_height - 300, pygame.image.load('art/cloak.png')), Objs.Item('key', 1, 1000, display_height - 600, pygame.image.load('art/redkey.png')), Objs.Item('key', 2, 1200, display_height - 500, pygame.image.load('art/bluekey.png')), Objs.Item('key', 3, 900, display_height - 700, pygame.image.load('art/blackkey.png'))]
+    chamberItems = [Objs.Item("weapon", 3, 700, display_height - 500, pygame.image.load('art/stiik0.png'), pygame.image.load('art/stiik.png')), Objs.Item("armour", 5, 900, display_height - 300, pygame.image.load('art/cloak.png'), None), Objs.Item('key', 1, 1000, display_height - 600, pygame.image.load('art/redkey.png'), None), Objs.Item('key', 2, 1200, display_height - 500, pygame.image.load('art/bluekey.png'), None), Objs.Item('key', 3, 900, display_height - 700, pygame.image.load('art/blackkey.png'), None)]
     #add chest
     chest = Objs.Chest(400, display_height - 400, chamberItems)
     chamber.addChest(chest)
@@ -163,8 +163,8 @@ def constructGraph():
     #chamber 10
     chamberDoors = [Objs.Door('121', 1, 11), Objs.Door('213', 2, 15), Objs.Door(' ', 3, 9), Objs.Door('111', 4, 4)]
     chamber = Objs.Chamber(10, chamberDoors)
-    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png')),
-                    Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'))]
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png'), pygame.image.load('art/swordRight.png')),
+                    Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(400, display_height - 400, chamberItems)
     chamber.addChest(chest)
@@ -324,13 +324,17 @@ def game_loop(currentChamber):
                     if event.key == pygame.K_s:
                         char.ychange = 10
                         char.direction = 'down'
+                    if event.key == pygame.K_p:
+                        if char.direction == 'left':
+                            char.showWeaponLeft = True
+                        if char.direction == 'right':
+                            char.showWeaponRight = True
                 if event.key == pygame.K_RETURN and gameover:
                     constructGraph()
                     currentChamber = 0
                     char.reset()
-
-
-
+                    keys = []
+                    gameover = False
                 #red key handling
                 if event.key == pygame.K_1:
                     for door in graph.chambers[currentChamber].doors:
@@ -362,6 +366,9 @@ def game_loop(currentChamber):
                     char.xchange = 0
                 if event.key == pygame.K_w or event.key == pygame.K_s:
                     char.ychange = 0
+                if event.key == pygame.K_p:
+                    char.showWeaponLeft = False
+                    char.showWeaponRight = False
         if characterInBounds(char):
             char.x += char.xchange
             char.y += char.ychange
@@ -385,14 +392,23 @@ def game_loop(currentChamber):
                     else:
                         door.doorImg = pygame.image.load('art/door.jpg')
         for tida in graph.chambers[currentChamber].tidas:
-            show(tida.x, tida.y, tida.tidaImg)
-            tida.chase(char)
-            if collided(char.x, char.y, char.imgW, char.imgH, tida.x, tida.y, 100, 100):
-                if char.x < tida.x:
-                    char.x += -21
-                elif char.x >= tida.x:
-                    char.x += 21
-                char.health += (int) (-25/char.armour)
+            if tida.health > 0:
+                show(tida.x, tida.y, tida.tidaImg)
+                tida.chase(char)
+                if collided(char.x, char.y, char.imgW, char.imgH, tida.x, tida.y, 100, 100):
+                    if char.x < tida.x:
+                        char.x += -21
+                    elif char.x >= tida.x:
+                        char.x += 21
+                    char.health += (int) (-25/char.armour)
+                if collided(char.x - 50, char.y + 25, 50, 50, tida.x, tida.y, 100, 100) and char.showWeaponLeft:
+                    tida.x += -21
+                    tida.health += -char.attack
+                if collided(char.x + 100, char.y + 25, 50, 50, tida.x, tida.y, 100, 100) and char.showWeaponRight:
+                    tida.x += 21
+                    tida.health += -char.attack
+            else:
+                graph.chambers[currentChamber].tidas.remove(tida)
         for chests in graph.chambers[currentChamber].chests:
             show(chests.x, chests.y, chests.chestImg)
             if collided(char.x, char.y, char.imgW, char.imgH, chests.x, chests.y, 100, 100):
@@ -405,7 +421,7 @@ def game_loop(currentChamber):
             if collided(char.x, char.y, char.imgW, char.imgH, item.x, item.y, 50, 50):
                 if item.type == 'weapon':
                     char.attack += item.stat
-                    char.newWeapon(item.itemImg)
+                    char.newWeapon(item)
                 elif item.type == 'armour':
                     char.armour += item.stat
                     char.newArmour(item.itemImg)
@@ -429,6 +445,11 @@ def game_loop(currentChamber):
                 show(display_width/2 - 400, display_height/2 - 100, npc.dialogImg)
         showText('attack: ' + str(char.attack) + ' armour: ' + str(char.armour) + ' health: ' + str(char.health), 300, 50)
         show(char.x, char.y, char.charImg)
+        if char.showWeaponLeft:
+            show(char.x - 50, char.y + 25, char.weaponImgLeft)
+
+        elif char.showWeaponRight:
+            show(char.x + 100, char.y + 25, char.weaponImgRight)
         if gameover:
             showText('Game OVER', display_width/2, display_height/2)
             showText('Enter to play again', display_width / 2, display_height / 2 + 300)

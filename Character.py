@@ -15,15 +15,18 @@ class Character:
         self.imgW = imgW
         self.imgH = imgH
         self.direction = "right"
-        self.weaponImg = None
+        self.weaponImgLeft = pygame.image.load('art/stiik0.png')
+        self.weaponImgRight = pygame.image.load('art/stiik.png')
         self.armourImg = None
         self.magic = ""
-
+        self.showWeaponLeft = False
+        self.showWeaponRight = False
     def addSpell(self, name):
         self.magic = name
         
-    def newWeapon(self, itemImg):
-        self.weaponImg = itemImg
+    def newWeapon(self, item):
+        self.weaponImgLeft = item.itemImg
+        self.weaponImgRight = item.itemImgRight
 
     def newArmour(self, itemImg):
         self.armourImg = itemImg
@@ -36,6 +39,9 @@ class Character:
         self.health = 100
         self.attack = 1
         self.armour = 1
+        self.x = 0
+        self.y = 0
+
 
 
 class NPC:
@@ -70,6 +76,7 @@ class Tidabite:
         self.imgW = 100
         self.imgH = 100
         self.tidaImg = NPCImg
+        self.health = 50
 
     def chase(self, character):
         if self.x < character.x:

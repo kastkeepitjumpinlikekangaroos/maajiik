@@ -4,13 +4,13 @@ display_height = 900
 
 
 class Item:
-    def __init__(self, type, stat, x, y, itemImg):
+    def __init__(self, type, stat, x, y, itemImg, itemImgRight):
         self.type = type
         self.stat = stat
         self.x = x
         self.y = y
         self.itemImg = itemImg
-
+        self.itemImgRight = itemImgRight
 
 class Chest:
     def __init__(self, x, y, items):
