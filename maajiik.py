@@ -11,8 +11,13 @@ white = (255, 255, 255)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
+<<<<<<< HEAD
 #gameDisplay = pygame.display.set_mode((display_width, display_height))
 gameDisplay = pygame.display.set_mode((display_width, display_height), pygame.FULLSCREEN)#has to be a touple
+=======
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+#gameDisplay = pygame.display.set_mode((display_width, display_height), pygame.FULLSCREEN)#has to be a touple
+>>>>>>> origin/master
 pygame.display.set_caption('Maajiik')
 clock = pygame.time.Clock()
 pygame.mixer.init()
@@ -139,38 +144,68 @@ def constructGraph():
     #chamber 7
     chamberDoors = [Objs.Door(' ', 3, 6)]
     chamber = Objs.Chamber(7, chamberDoors)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 15, 700, display_height - 400, pygame.image.load('art/sword0.png'),
                               pygame.image.load('art/swordRight0.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 400, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 200, 100, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 25, 700, display_height - 500, pygame.image.load('art/sword1.png'),
                               pygame.image.load('art/swordRight1.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 900, display_height - 400, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 200, 400, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 35, 700, display_height - 600, pygame.image.load('art/sword2.png'),
                               pygame.image.load('art/swordRight2.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 600, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 900, display_height - 500, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 200, 700, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 15, 600, display_height - 400, pygame.image.load('art/sword0.png'),
                               pygame.image.load('art/swordRight0.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 600, display_height - 400, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 500, display_height - 300, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 300, 100, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 25, 600, display_height - 500, pygame.image.load('art/sword1.png'),
                               pygame.image.load('art/swordRight1.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 600, display_height - 500, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 500, display_height - 400, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 300, 400, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 35, 600, display_height - 600, pygame.image.load('art/sword2.png'),
                               pygame.image.load('art/swordRight2.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 600, display_height - 600, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 500, display_height - 500, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 300, 700, chamberItems)
@@ -214,8 +249,15 @@ def constructGraph():
     #chamber 11
     chamberDoors = [Objs.Door(' ', 1, 12), Objs.Door(' ', 3, 10)]
     chamber = Objs.Chamber(11, chamberDoors)
+<<<<<<< HEAD
     tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('art/windu.png'), pygame.image.load('art/windu.png'), 100)
     tida.health = 500
+=======
+    tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('hero.png'), pygame.image.load('hero.png'), 100)
+    tida.health = 500
+    tida.imgW = 626
+    tida.imgH = 747
+>>>>>>> origin/master
     chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 12
@@ -257,8 +299,13 @@ def constructGraph():
     #chamber 15
     chamberDoors = [Objs.Door(' ', 1, 16), Objs.Door(' ', 3, 14), Objs.Door(' ', 4, 10)]
     chamber = Objs.Chamber(15, chamberDoors)
+<<<<<<< HEAD
     tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('art/dahlmer.png'),
                               pygame.image.load('art/dahlmer.png'), 100)
+=======
+    tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('hero.png'),
+                              pygame.image.load('hero.png'), 100)
+>>>>>>> origin/master
     tida.health = 500
     tida.imgW = 626
     tida.imgH = 747
@@ -267,20 +314,35 @@ def constructGraph():
     #chamber 16
     chamberDoors = [Objs.Door(' ', 3, 15)]
     chamber = Objs.Chamber(16, chamberDoors)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 15, 700, display_height - 400, pygame.image.load('art/sword0.png'),
                               pygame.image.load('art/swordRight0.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 400, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 200, 100, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 25, 700, display_height - 500, pygame.image.load('art/sword1.png'),
                               pygame.image.load('art/swordRight1.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 900, display_height - 400, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 200, 400, chamberItems)
     chamber.addChest(chest)
+<<<<<<< HEAD
     chamberItems = [Objs.Item("weapon", 35, 700, display_height - 600, pygame.image.load('art/sword2.png'),
                               pygame.image.load('art/swordRight2.png')),
+=======
+    chamberItems = [Objs.Item("weapon", 15, 700, display_height - 600, pygame.image.load('art/sword.png'),
+                              pygame.image.load('art/swordRight.png')),
+>>>>>>> origin/master
                     Objs.Item("armour", 15, 900, display_height - 500, pygame.image.load('art/armour.png'), None)]
     # add chest
     chest = Objs.Chest(display_width - 200, 700, chamberItems)
@@ -367,7 +429,10 @@ def game_loop(currentChamber):
     haveBlueKey = False
     haveBlackKey = False
     gameover = False
+<<<<<<< HEAD
     resetMusic = False
+=======
+>>>>>>> origin/master
     while not quit:
         if char.health <= 0:
             gameover = True
