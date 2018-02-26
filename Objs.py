@@ -1,16 +1,18 @@
 import pygame
-import math
 display_width = 1600
 display_height = 900
 
 
 class Item:
-    def __init__(self, type, stat, x, y, itemImg):
+    def __init__(self, type, stat, x, y, itemImg, itemImgRight):
         self.type = type
         self.stat = stat
         self.x = x
         self.y = y
         self.itemImg = itemImg
+        self.itemImgRight = itemImgRight
+        self.imgW = 50
+        self.imgH = 50
 
 class Chest:
     def __init__(self, x, y, items):
@@ -20,14 +22,19 @@ class Chest:
         self.chestImg = pygame.image.load('art/chest.png')
 
 
-
 class Door:
     def __init__(self, combo, number, destinationNum):
         self.combo = combo
-        self.locked = True
+        if self.combo == ' ':
+            self.locked = False
+        else:
+            self.locked = True
+        self.doorFlash = False
         self.number = number
+        self.flashTimer = 0
         self.destination = destinationNum
         self.doorBuffer = ""
+        self.failedAttempt = False
         if self.number == 1:
             self.x = display_width - 50
             self.y = display_height/2 - 150
@@ -68,12 +75,22 @@ class Door:
                 self.doorImg = pygame.image.load('art/door0.png')
             else:
                 self.doorImg = pygame.image.load('art/door.png')
+            return True
+        else:
+            return False
 
     def addToDoorBuffer(self, key):
         self.doorBuffer += key
-        if len(self.doorBuffer) == len(self.combo):
-            self.unlock(self.doorBuffer)
+        if len(self.doorBuffer) == len(self.combo) and self.locked:
+            if not self.unlock(self.doorBuffer):
+                if self.number % 2 == 0:
+                    self.doorImg = pygame.image.load('art/locked0.png')
+                    self.failedAttempt = True
+                else:
+                    self.doorImg = pygame.image.load('art/locked.png')
+                    self.failedAttempt = True
             self.doorBuffer = ""
+
 
 class Chamber:
     def __init__(self, name, doors):
@@ -100,4 +117,3 @@ class Graph:
 
     def addChamber(self, chamber):
         self.chambers[chamber.name] = chamber
-
