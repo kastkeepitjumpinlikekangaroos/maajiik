@@ -470,15 +470,15 @@ def game_loop(currentChamber):
                 tida.chase(char)
                 if collided(char.x, char.y, char.imgW, char.imgH, tida.x, tida.y, tida.imgW, tida.imgH):
                     if char.x < tida.x:
-                        char.x += -21
+                        char.x += -15
                     elif char.x >= tida.x:
-                        char.x += 21
+                        char.x += 15
                     char.health += (int)(-tida.damage/char.armour)
                 if collided(char.x - 50, char.y + 25, 50, 50, tida.x, tida.y, tida.imgW, tida.imgH) and char.showWeaponLeft:
-                    tida.x += -21
+                    tida.x += -15
                     tida.health += -char.attack
                 if collided(char.x + 100, char.y + 25, 50, 50, tida.x, tida.y, tida.imgW, tida.imgH) and char.showWeaponRight:
-                    tida.x += 21
+                    tida.x += 15
                     tida.health += -char.attack
             else:
                 graph.chambers[currentChamber].tidas.remove(tida)
