@@ -199,7 +199,7 @@ def constructGraph():
     chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 10
-    chamberDoors = [Objs.Door('121', 1, 11), Objs.Door('213', 2, 15), Objs.Door(' ', 3, 9), Objs.Door('111', 4, 4)]
+    chamberDoors = [Objs.Door('131', 1, 11), Objs.Door('213', 2, 15), Objs.Door(' ', 3, 9), Objs.Door('111', 4, 4)]
     chamber = Objs.Chamber(10, chamberDoors)
     chamberItems = [Objs.Item("weapon", 15, 700, display_height - 500, pygame.image.load('art/sword.png'), pygame.image.load('art/swordRight.png')),
                     Objs.Item("armour", 15, 900, display_height - 300, pygame.image.load('art/armour.png'), None)]
@@ -246,7 +246,7 @@ def constructGraph():
     chamberDoors = [Objs.Door('213', 1, 15), Objs.Door('233', 2, 18), Objs.Door(' ', 4, 9)]
     chamber = Objs.Chamber(14, chamberDoors)
     # add NPC
-    NPC = Character.NPC(100, display_height - 100, pygame.image.load('art/dialog14.png'),
+    NPC = Character.NPC(display_width - 100, display_height - 100, pygame.image.load('art/dialog14.png'),
                         pygame.image.load('art/dialog14.png'), pygame.image.load('art/prisoner.png'), '', "")
     chamber.addNpc(NPC)
     tida = Character.Tidabite(display_width, display_height, pygame.image.load('art/tidabite.png'))
