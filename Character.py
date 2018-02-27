@@ -82,12 +82,12 @@ class Tidabite:
 
     def chase(self, character):
         if self.x < character.x:
-            self.x += 6
+            self.x += 7
             self.tidaImg = self.tidaImgRight
         elif self.x > character.x:
-            self.x += -6
+            self.x += -7
             self.tidaImg = self.tidaImgLeft
         if self.y < character.y:
-            self.y += 6
+            self.y += 7
         elif self.y > character.y:
-            self.y += -6
+            self.y += -7
