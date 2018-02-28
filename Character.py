@@ -41,7 +41,8 @@ class Character:
         self.armour = 1
         self.x = 0
         self.y = 0
-
+        self.weaponImgLeft = None
+        self.weaponImgRight = None
 
 class NPC:
     def __init__(self, x, y, dialogImg, dialogbImg, NPCImg, combo, magicName):
