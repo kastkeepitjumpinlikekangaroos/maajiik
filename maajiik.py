@@ -1,6 +1,7 @@
 import pygame
 import Character
 import Objs
+from math import ceil
 pygame.init()
 display_width = 1600
 display_height = 900
@@ -260,8 +261,6 @@ def constructGraph():
     tida = Character.Tidabite(display_width - 400, display_height - 200, pygame.image.load('art/dahlmer.png'),
                               pygame.image.load('art/dahlmer.png'), 100)
     tida.health = 500
-    tida.imgW = 626
-    tida.imgH = 747
     chamber.addTida(tida)
     graph.addChamber(chamber)
     #chamber 16
@@ -473,7 +472,7 @@ def game_loop(currentChamber):
                         char.x += -15
                     elif char.x >= tida.x:
                         char.x += 15
-                    char.health += (int)(-tida.damage/char.armour)
+                    char.health += -ceil(tida.damage/char.armour)
                 if collided(char.x - 50, char.y + 25, 50, 50, tida.x, tida.y, tida.imgW, tida.imgH) and char.showWeaponLeft:
                     tida.x += -15
                     tida.health += -char.attack
