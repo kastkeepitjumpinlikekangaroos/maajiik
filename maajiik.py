@@ -396,6 +396,9 @@ def game_loop(currentChamber):
                     currentChamber = 0
                     char.reset()
                     keys = []
+                    haveBlackKey = False
+                    haveRedKey = False
+                    haveBlueKey = False
                     gameover = False
                 #red key handling
                 if event.key == pygame.K_1:
