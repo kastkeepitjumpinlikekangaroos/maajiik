@@ -518,6 +518,7 @@ def game_loop(currentChamber):
             show(npc.x, npc.y, npc.NPCImg)
             if collided(char.x, char.y, char.imgW, char.imgH, npc.x, npc.y, npc.imgW + 50, npc.imgH+ 50):
                 show(display_width/2 - 400, display_height/2 - 100, npc.dialogImg)
+                #show(display_width / 2 - 400 - 80, display_height / 2 - 100 - 100, pygame.image.load('art/border.png'))
         showText('attack: ' + str(char.attack) + ' armour: ' + str(char.armour) + ' health: ' + str(char.health), 300, 50)
         show(char.x, char.y, char.charImg)
         if char.showWeaponLeft and char.weaponImgLeft is not None:
