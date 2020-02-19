@@ -21,9 +21,10 @@ class Character:
         self.magic = ""
         self.showWeaponLeft = False
         self.showWeaponRight = False
+
     def addSpell(self, name):
         self.magic = name
-        
+
     def newWeapon(self, item):
         self.weaponImgLeft = item.itemImg
         self.weaponImgRight = item.itemImgRight
@@ -44,6 +45,7 @@ class Character:
         self.weaponImgLeft = None
         self.weaponImgRight = None
 
+
 class NPC:
     def __init__(self, x, y, dialogImg, dialogbImg, NPCImg, combo, magicName):
         self.x = x
@@ -56,7 +58,7 @@ class NPC:
         self.spellBuffer = ""
         self.dialogbImg = dialogbImg
         self.magicName = magicName
-        
+
     def unlockSpell(self, combo, char):
         if combo == self.combo:
             self.dialogImg = self.dialogbImg
