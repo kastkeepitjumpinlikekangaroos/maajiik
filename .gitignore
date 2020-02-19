@@ -1,3 +1,4 @@
+*.idea
 venv
 *__pycache__*
 # Windows image file caches
