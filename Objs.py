@@ -14,6 +14,7 @@ class Item:
         self.imgW = 50
         self.imgH = 50
 
+
 class Chest:
     def __init__(self, x, y, items):
         self.x = x
@@ -37,15 +38,15 @@ class Door:
         self.failedAttempt = False
         if self.number == 1:
             self.x = display_width - 50
-            self.y = display_height/2 - 150
+            self.y = display_height / 2 - 150
         elif self.number == 2:
-            self.x = display_width/2 - 150
+            self.x = display_width / 2 - 150
             self.y = display_height - 50
         elif self.number == 3:
             self.x = 0
             self.y = display_height / 2 - 150
         elif self.number == 4:
-            self.x = display_width/2 - 150
+            self.x = display_width / 2 - 150
             self.y = 0
         if number % 2 == 0:
             self.width = 300
