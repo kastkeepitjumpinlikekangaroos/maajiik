@@ -1,18 +1,19 @@
 import pygame
-display_width = 1600
-display_height = 900
+
+display_width = 1920
+display_height = 1080
 
 
 class Item:
-    def __init__(self, type, stat, x, y, itemImg, itemImgRight):
+    def __init__(self, type, stat, x, y, item_img, item_img_right):
         self.type = type
         self.stat = stat
         self.x = x
         self.y = y
-        self.itemImg = itemImg
-        self.itemImgRight = itemImgRight
-        self.imgW = 50
-        self.imgH = 50
+        self.item_img = item_img
+        self.item_img_right = item_img_right
+        self.img_w = 50
+        self.img_h = 50
 
 
 class Chest:
@@ -20,22 +21,23 @@ class Chest:
         self.x = x
         self.y = y
         self.items = items
-        self.chestImg = pygame.image.load('art/chest.png')
+        self.chest_img = pygame.image.load('art/chest.png')
 
 
 class Door:
-    def __init__(self, combo, number, destinationNum):
+    def __init__(self, combo, number, destination_num):
         self.combo = combo
         if self.combo == ' ':
             self.locked = False
         else:
             self.locked = True
-        self.doorFlash = False
+        self.door_flash = False
         self.number = number
-        self.flashTimer = 0
-        self.destination = destinationNum
-        self.doorBuffer = ""
-        self.failedAttempt = False
+        self.flash_timer = 0
+        self.destination = destination_num
+        self.door_buffer = ""
+        self.failed_attempt = False
+        # handle where to put the door on the scren
         if self.number == 1:
             self.x = display_width - 50
             self.y = display_height / 2 - 150
@@ -52,18 +54,18 @@ class Door:
             self.width = 300
             self.height = 50
             if combo == ' ':
-                self.doorImg = pygame.image.load('art/door0.png')
+                self.door_img = pygame.image.load('art/door0.png')
             else:
-                self.doorImg = pygame.image.load('art/door0.jpg')
+                self.door_img = pygame.image.load('art/door0.jpg')
         else:
             self.width = 50
             self.height = 300
             if combo == ' ':
-                self.doorImg = pygame.image.load('art/door.png')
+                self.door_img = pygame.image.load('art/door.png')
             else:
-                self.doorImg = pygame.image.load('art/door.jpg')
+                self.door_img = pygame.image.load('art/door.jpg')
 
-    def canPass(self):
+    def can_pass(self):
         if self.combo == ' ':
             self.locked = False
             return True
@@ -73,24 +75,24 @@ class Door:
         if combo == self.combo:
             self.locked = False
             if self.number % 2 == 0:
-                self.doorImg = pygame.image.load('art/door0.png')
+                self.door_img = pygame.image.load('art/door0.png')
             else:
-                self.doorImg = pygame.image.load('art/door.png')
+                self.door_img = pygame.image.load('art/door.png')
             return True
         else:
             return False
 
-    def addToDoorBuffer(self, key):
-        self.doorBuffer += key
-        if len(self.doorBuffer) == len(self.combo) and self.locked:
-            if not self.unlock(self.doorBuffer):
+    def add_to_door_buffer(self, key):
+        self.door_buffer += key
+        if len(self.door_buffer) == len(self.combo) and self.locked:
+            if not self.unlock(self.door_buffer):
                 if self.number % 2 == 0:
-                    self.doorImg = pygame.image.load('art/locked0.png')
-                    self.failedAttempt = True
+                    self.door_img = pygame.image.load('art/locked0.png')
+                    self.failed_attempt = True
                 else:
-                    self.doorImg = pygame.image.load('art/locked.png')
-                    self.failedAttempt = True
-            self.doorBuffer = ""
+                    self.door_img = pygame.image.load('art/locked.png')
+                    self.failed_attempt = True
+            self.door_buffer = ""
 
 
 class Chamber:
@@ -102,19 +104,19 @@ class Chamber:
         self.name = name
         self.doors = doors
 
-    def addChest(self, chest):
+    def add_chest(self, chest):
         self.chests.append(chest)
 
-    def addNpc(self, npc):
+    def add_npc(self, npc):
         self.npcs.append(npc)
 
-    def addTida(self, tida):
+    def add_tida(self, tida):
         self.tidas.append(tida)
 
 
 class Graph:
-    def __init__(self, size):
+    def __init__(self, size: int):
         self.chambers = [0] * size
 
-    def addChamber(self, chamber):
+    def add_chamber(self, chamber):
         self.chambers[chamber.name] = chamber

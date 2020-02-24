@@ -2,37 +2,37 @@ import pygame
 
 
 class Character:
-    def __init__(self, health, attack, armour, mType, charImg, imgW, imgH):
+    def __init__(self, health, attack, armour, m_type, char_img, img_w, img_h):
         self.health = health
         self.attack = attack
         self.armour = armour
-        self.mType = mType
+        self.m_type = m_type
         self.x = 0
         self.y = 0
-        self.xchange = 0
-        self.ychange = 0
-        self.charImg = charImg
-        self.imgW = imgW
-        self.imgH = imgH
+        self.x_change = 0
+        self.y_change = 0
+        self.char_img = char_img
+        self.img_w = img_w
+        self.img_h = img_h
         self.direction = ""
-        self.weaponImgLeft = None
-        self.weaponImgRight = None
-        self.armourImg = None
+        self.weapon_img_left = None
+        self.weapon_img_right = None
+        self.armour_img = None
         self.magic = ""
-        self.showWeaponLeft = False
-        self.showWeaponRight = False
+        self.show_weapon_left = False
+        self.show_weapon_right = False
 
-    def addSpell(self, name):
+    def add_spell(self, name):
         self.magic = name
 
-    def newWeapon(self, item):
-        self.weaponImgLeft = item.itemImg
-        self.weaponImgRight = item.itemImgRight
+    def new_weapon(self, item):
+        self.weapon_img_left = item.item_img
+        self.weapon_img_right = item.item_img_right
 
-    def newArmour(self, itemImg):
-        self.armourImg = itemImg
+    def new_armour(self, item_img):
+        self.armour_img = item_img
 
-    def useSpell(self):
+    def use_spell(self):
         if self.magic == "heal":
             self.health += 10
 
@@ -42,54 +42,54 @@ class Character:
         self.armour = 1
         self.x = 0
         self.y = 0
-        self.weaponImgLeft = None
-        self.weaponImgRight = None
+        self.weapon_img_left = None
+        self.weapon_img_right = None
 
 
 class NPC:
-    def __init__(self, x, y, dialogImg, dialogbImg, NPCImg, combo, magicName):
+    def __init__(self, x, y, dialog_img, dialog_b_img, npc_img, combo, magic_name):
         self.x = x
         self.combo = combo
         self.y = y
-        self.imgW = 100
-        self.imgH = 100
-        self.dialogImg = dialogImg
-        self.NPCImg = NPCImg
-        self.spellBuffer = ""
-        self.dialogbImg = dialogbImg
-        self.magicName = magicName
+        self.img_w = 100
+        self.img_h = 100
+        self.dialog_img = dialog_img
+        self.npc_img = npc_img
+        self.spell_buffer = ""
+        self.dialog_b_img = dialog_b_img
+        self.magic_name = magic_name
 
-    def unlockSpell(self, combo, char):
+    def unlock_spell(self, combo, char):
         if combo == self.combo:
-            self.dialogImg = self.dialogbImg
-            char.addSpell(self.magicName)
+            self.dialog_img = self.dialog_b_img
+            char.add_spell(self.magic_name)
 
-    def addToSpellBuffer(self, key, char):
-        self.spellBuffer += key
-        if len(self.spellBuffer) == len(self.combo):
-            self.unlockSpell(self.spellBuffer, char)
-            self.spellBuffer = ""
+    def add_to_spell_buffer(self, key, char):
+        self.spell_buffer += key
+        if len(self.spell_buffer) == len(self.combo):
+            self.unlock_spell(self.spell_buffer, char)
+            self.spell_buffer = ""
 
 
 class Tidabite:
-    def __init__(self, x, y, NPCImg, NPCImgRight=pygame.image.load('art/tidabite0.png'), damage=25):
+    def __init__(self, x, y, npc_img, npc_img_right=pygame.image.load('art/tidabite0.png'), damage=25):
         self.x = x
         self.y = y
-        self.imgW = 100
-        self.imgH = 100
-        self.tidaImg = NPCImg
-        self.tidaImgLeft = NPCImg
+        self.img_w = 100
+        self.img_h = 100
+        self.tida_img = npc_img
+        self.tida_img_left = npc_img
         self.health = 50
         self.damage = damage
-        self.tidaImgRight = NPCImgRight
+        self.tida_img_right = npc_img_right
 
     def chase(self, character):
         if self.x < character.x:
             self.x += 7
-            self.tidaImg = self.tidaImgRight
+            self.tida_img = self.tida_img_right
         elif self.x > character.x:
             self.x += -7
-            self.tidaImg = self.tidaImgLeft
+            self.tida_img = self.tida_img_left
         if self.y < character.y:
             self.y += 7
         elif self.y > character.y:
